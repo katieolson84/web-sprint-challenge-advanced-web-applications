@@ -22,15 +22,17 @@ const ColorList = ({ colors, updateColors }) => {
     axiosWithAuth()
       .put(`/colors/${colorToEdit.id}`, colorToEdit)
       .then(res => {
+        const newColors = colors.filter((item) => item.id !== res.data.id);
+        updateColors([...newColors, res.data])
         setEditing(false)
       })
       .catch(err => console.log(`error`, err.response))
   };
 
   const deleteColor = color => {
-    // make a delete request to delete this color
+   
     axiosWithAuth()
-      .delete(`/colors/${colorToEdit.id}`, colorToEdit)
+      .delete(`/colors/${colorToEdit.id}`)
       .then((res) => {
         updateColors(colors.filter(item => item.id !== color.id))
         setEditing(false)
