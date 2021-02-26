@@ -4,7 +4,6 @@ import { Form, Button } from 'react-bootstrap'
 import styled from 'styled-components';
 
 const Container = styled.div`
-  border: solid 1px red;
   width: 100%;
   margin: 0;
   box-sizing: border-box;
@@ -14,7 +13,6 @@ const Container = styled.div`
   align-content: center;
 
   .form-container{
-    border: solid 1px blue;
     width: 50%;
     border: .2rem solid #ececec;
     align-self: center;
@@ -42,18 +40,13 @@ const Login = (props) => {
 
   const handleChange = e => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value});
-  };
+  }
 
   const handleSubmit = e => {
     e.preventDefault();
-
-    const newUser = {
-      username: "Lambda School",
-      password: "i<3Lambd4"
-    }
-
+   
     axiosWithAuth()
-      .post('/login', newUser)
+      .post('/login', formValues)
       .then((res) => {
         localStorage.setItem('token', res.data.payload);
         props.history.push('/bubble-page');
