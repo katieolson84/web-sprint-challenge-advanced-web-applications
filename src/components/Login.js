@@ -63,7 +63,7 @@ const Login = (props) => {
       <h1>Welcome to the Bubble App!</h1>
       <Form className="form-container" onSubmit={handleSubmit}>
         <Form.Group controlId="formBasicEmail">
-          <Form.Label>User Name</Form.Label>
+          <Form.Label>Username</Form.Label>
           <Form.Control 
             type="text" 
             placeholder="Enter Username" 
